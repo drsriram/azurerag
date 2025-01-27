@@ -52,31 +52,17 @@
 
 
 
-Start
-  |
-  v
-[Upload PDF]
-  |
-  v
-[Azure Blob Storage (Input PDFs)]
-  |
-  v
-[Blob Trigger - Azure Function]
-  |
-  v
-[Azure Form Recognizer]
-  |
-  v
-[Transform JSON to Structured Data]
-  |
-  v
-[Generate Excel File - Azure Function]
-  |
-  v
-[Azure Blob Storage (Output Excel)]
-  |
-  v
-[Notify User - Azure Logic App]
-  |
-  v
-End
+# Automated PDF to Excel Workflow
+
+```mermaid
+flowchart TD
+    Start[Start] --> UploadPDF[Upload PDF]
+    UploadPDF --> BlobStorageInput[Azure Blob Storage (Input PDFs)]
+    BlobStorageInput --> BlobTrigger[Blob Trigger - Azure Function]
+    BlobTrigger --> FormRecognizer[Azure Form Recognizer (Custom Model)]
+    FormRecognizer --> TransformData[Transform JSON to Structured Data]
+    TransformData --> GenerateExcel[Generate Excel File - Azure Function]
+    GenerateExcel --> BlobStorageOutput[Azure Blob Storage (Output Excel)]
+    BlobStorageOutput --> NotifyUser[Notify User - Azure Logic App]
+    NotifyUser --> End[End]
+
