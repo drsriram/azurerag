@@ -49,3 +49,34 @@
   - Limited to simple text-based retrieval.
   - Preprocessing required for non-text PDFs.
   - Inefficient for relational or complex data queries.
+
+
+
+Start
+  |
+  v
+[Upload PDF]
+  |
+  v
+[Azure Blob Storage (Input PDFs)]
+  |
+  v
+[Blob Trigger - Azure Function]
+  |
+  v
+[Azure Form Recognizer]
+  |
+  v
+[Transform JSON to Structured Data]
+  |
+  v
+[Generate Excel File - Azure Function]
+  |
+  v
+[Azure Blob Storage (Output Excel)]
+  |
+  v
+[Notify User - Azure Logic App]
+  |
+  v
+End
